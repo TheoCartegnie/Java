@@ -13,11 +13,11 @@ public class Main {
     /**
      * Load good amount of crate in the truck , depending on wath remain in the old local
      */
-    public  void LoadCrates()
+    public  void loadCrates()
     {
-        PrintLine("There is " + getOldPlaceCrateAmount() + " crates, in the old local");
+        printLine("There is " + getOldPlaceCrateAmount() + " crates, in the old local");
         int testTruck = getOldPlaceCrateAmount() - getTruckCrateEmplacement();
-   
+
         if(testTruck < 0) {
             setCurrentCratesLoading(getOldPlaceCrateAmount());
             setOldPlaceCrateAmount(0);
@@ -27,14 +27,14 @@ public class Main {
             setOldPlaceCrateAmount(getOldPlaceCrateAmount() - 9);
             setCurrentCratesLoading(getTruckCrateEmplacement());
         }
-        PrintLine("Loading " + getCurrentCratesLoading() + " in the truck. It remain " + oldLocalCrates + " crates, in the old local");
+        printLine("Loading " + getCurrentCratesLoading() + " in the truck. It remain " + oldLocalCrates + " crates, in the old local");
 
     }
 
     /**
      * Make the truck travelling from a place to another
      */
-    public  void Traveling()
+    public  void traveling()
     {
         System.out.println("Travelling");
     }
@@ -42,36 +42,36 @@ public class Main {
     /**
      * Unload the crate in the new local
      */
-    public  void UnloadCrates()
+    public  void unloadCrates()
     {
-        PrintLine("Unloading");
+        printLine("Unloading");
         newLocalCrates += getCurrentCratesLoading();
-        PrintLine("Put " + getCurrentCratesLoading() + " crates, in the new local");
+        printLine("Put " + getCurrentCratesLoading() + " crates, in the new local");
         setCurrentCratesLoading(0);
     }
 
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
-        PrintLine("Hello and welcome!");
+        printLine("Hello and welcome!");
         Main program = new Main();
 
         Scanner input = new Scanner(System.in);
 
 
 
-        PrintLine("Combien de cartons voulez vous deplacer ?");
+        printLine("Combien de cartons voulez vous deplacer ?");
         program.setOldPlaceCrateAmount(input.nextInt());
 
-        PrintLine("Quelle est la capacité de votre camion ?");
+        printLine("Quelle est la capacité de votre camion ?");
         program.setTruckCrateEmplacement(input.nextInt());
 
         while(program.oldLocalCrates > 0)
         {
-            program.Moving();
+            program.moving();
         }
 
-        PrintLine("There is " +  program.newLocalCrates + " in the new local");
+        printLine("There is " +  program.newLocalCrates + " in the new local");
 
     }
 
@@ -79,7 +79,7 @@ public class Main {
      *
      * Usefull to not calling "System.out.println" everywhere in the code
      */
-    public static void PrintLine(String messages)
+    public static void printLine(String messages)
     {
         System.out.println(messages);
     }
@@ -88,7 +88,7 @@ public class Main {
      *
      * Polymorph of PrintLine(String message) to take "int" in parameters
      */
-    public static void PrintLine(int messages)
+    public static void printLine(int messages)
     {
         System.out.println(messages);
     }
@@ -97,11 +97,11 @@ public class Main {
      *
      * Call the instruction of moving
      */
-    public void Moving()
+    public void moving()
     {
-            LoadCrates();
-            Traveling();
-            UnloadCrates();
+            loadCrates();
+            traveling();
+            unloadCrates();
     }
 
     public int getOldPlaceCrateAmount() {
