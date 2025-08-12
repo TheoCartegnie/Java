@@ -2,12 +2,16 @@ import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+/**
+ *
+ */
 public class Main {
      private int currentCratesLoading = 0;
      private int truckCrateEmplacement = 9;
 
 
-     public int oldLocalCrates = 34;
+     private int oldLocalCrates = 34;
      int newLocalCrates = 0;
 
     /**
@@ -50,6 +54,11 @@ public class Main {
         setCurrentCratesLoading(0);
     }
 
+    /**
+     *
+     * @param args
+     * Basic paramater of java main function
+     */
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
@@ -78,6 +87,8 @@ public class Main {
     /**
      *
      * Usefull to not calling "System.out.println" everywhere in the code
+     * @param messages
+     * String type : The message to display on log
      */
     public static void printLine(String messages)
     {
@@ -87,7 +98,9 @@ public class Main {
     /**
      *
      * Polymorph of PrintLine(String message) to take "int" in parameters
-     */
+     * @param messages
+     *String Type : The message to print in the log
+     *  */
     public static void printLine(int messages)
     {
         System.out.println(messages);
@@ -104,26 +117,56 @@ public class Main {
             unloadCrates();
     }
 
+    /**
+     *
+     * @return
+     * Return the number of crate who are still in the old location
+     */
     public int getOldPlaceCrateAmount() {
         return oldLocalCrates;
     }
 
+    /**
+     *
+     * @param cratesNumber
+     * Number of crate presente in the previous place
+     */
     public void setOldPlaceCrateAmount(int cratesNumber) {
         this.oldLocalCrates = cratesNumber;
     }
 
+    /**
+     *
+     * @return
+     * Return the current number of crates in the truck
+     */
     public int getCurrentCratesLoading() {
         return currentCratesLoading;
     }
 
+    /**
+     *
+     * @param cratesLoading
+     * Set the current number of crates in the truck
+     */
     public void setCurrentCratesLoading(int cratesLoading) {
         this.currentCratesLoading = cratesLoading;
     }
 
+    /**
+     *
+     * @param truckCrateEmplacement
+     * Set the number max of emplacement for the truck
+     */
     public void setTruckCrateEmplacement(int truckCrateEmplacement) {
         this.truckCrateEmplacement = truckCrateEmplacement;
     }
 
+    /**
+     *
+     * @return
+     * Return the number of crate emplacement free
+     */
     public int getTruckCrateEmplacement() {
         return truckCrateEmplacement;
     }
