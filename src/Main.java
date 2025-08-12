@@ -7,6 +7,10 @@ import java.util.Scanner;
  *
  */
 public class Main {
+
+
+    Truck truck;
+    Crate[] crates = new Crate[10];
      private int currentCratesLoading = 0;
      private int truckCrateEmplacement = 9;
 
