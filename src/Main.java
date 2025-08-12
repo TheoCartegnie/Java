@@ -1,31 +1,31 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-     int CurrentCratesLoading = 0;
-     int TruckCrateEmplacement = 9;
+     int currentCratesLoading = 0;
+     int truckCrateEmplacement = 9;
 
 
-     public int OldLocalCrates = 34;
-     int NewLocalCrates = 0;
+     public int oldLocalCrates = 34;
+     int newLocalCrates = 0;
 
 
     public  void LoadCrates()
     {
-        System.out.println("There is " + OldLocalCrates + " crates, in the old local");
-        int testtruck = OldLocalCrates - TruckCrateEmplacement;
-        System.out.println(testtruck);
+        PrintLine("There is " + oldLocalCrates + " crates, in the old local");
+        int testTruck = oldLocalCrates - truckCrateEmplacement;
+        PrintLine(testTruck);
 
 
-        if(testtruck< 0) {
-            CurrentCratesLoading = OldLocalCrates - testtruck;
-            OldLocalCrates = 0;
+        if(testTruck < 0) {
+            currentCratesLoading =  oldLocalCrates;
+            oldLocalCrates = 0;
         }
         else
         {
-            OldLocalCrates -= 9;
-            CurrentCratesLoading = 9;
+            oldLocalCrates -= 9;
+            currentCratesLoading = 9;
         }
-        System.out.println("Loading " + CurrentCratesLoading + " in the truck. It remain " + OldLocalCrates + " crates, in the old local");
+        PrintLine("Loading " + currentCratesLoading + " in the truck. It remain " + oldLocalCrates + " crates, in the old local");
 
     }
 
@@ -36,28 +36,38 @@ public class Main {
 
     public  void UnloadCrates()
     {
-        System.out.println("Unloading");
-        NewLocalCrates += CurrentCratesLoading;
-        System.out.println("Put " + CurrentCratesLoading + " crates, in the new local");
-        CurrentCratesLoading = 0;
+        PrintLine("Unloading");
+        newLocalCrates += currentCratesLoading;
+        PrintLine("Put " + currentCratesLoading + " crates, in the new local");
+        currentCratesLoading = 0;
     }
 
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        PrintLine("Hello and welcome!");
         Main program = new Main();
 
 
-        while(program.OldLocalCrates > 0)
+        while(program.oldLocalCrates > 0)
         {
             program.Moving();
         }
 
-        System.out.println("There is " +  program.NewLocalCrates + " in the new local");
+        PrintLine("There is " +  program.newLocalCrates + " in the new local");
 
     }
 
+    public static void PrintLine(String messages)
+    {
+        System.out.println(messages);
+    }
+
+
+    public static void PrintLine(int messages)
+    {
+        System.out.println(messages);
+    }
 
     public void Moving()
     {
