@@ -8,7 +8,9 @@ public class Main {
      public int oldLocalCrates = 34;
      int newLocalCrates = 0;
 
-
+    /**
+     * Load good amount of crate in the truck , depending of wath remain in the old local
+     */
     public  void LoadCrates()
     {
         PrintLine("There is " + oldLocalCrates + " crates, in the old local");
@@ -29,11 +31,17 @@ public class Main {
 
     }
 
+    /**
+     * Make the truck travelling from a place to another
+     */
     public  void Traveling()
     {
         System.out.println("Travelling");
     }
 
+    /**
+     * Unload the crate in the new local
+     */
     public  void UnloadCrates()
     {
         PrintLine("Unloading");
@@ -58,17 +66,28 @@ public class Main {
 
     }
 
+    /**
+     *
+     * Usefull to not calling "System.out.println" everywhere in the code
+     */
     public static void PrintLine(String messages)
     {
         System.out.println(messages);
     }
 
-
+    /**
+     *
+     * Polymorph of PrintLine(String message) to take "int" in parameters
+     */
     public static void PrintLine(int messages)
     {
         System.out.println(messages);
     }
 
+    /**
+     *
+     * Call the instruction of moving
+     */
     public void Moving()
     {
             LoadCrates();
