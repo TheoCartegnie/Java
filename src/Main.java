@@ -1,33 +1,33 @@
+import java.util.Scanner;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-     int currentCratesLoading = 0;
-     int truckCrateEmplacement = 9;
+     private int currentCratesLoading = 0;
+     private int truckCrateEmplacement = 9;
 
 
      public int oldLocalCrates = 34;
      int newLocalCrates = 0;
 
     /**
-     * Load good amount of crate in the truck , depending of wath remain in the old local
+     * Load good amount of crate in the truck , depending on wath remain in the old local
      */
     public  void LoadCrates()
     {
-        PrintLine("There is " + oldLocalCrates + " crates, in the old local");
-        int testTruck = oldLocalCrates - truckCrateEmplacement;
-        PrintLine(testTruck);
-
-
+        PrintLine("There is " + getOldPlaceCrateAmount() + " crates, in the old local");
+        int testTruck = getOldPlaceCrateAmount() - getTruckCrateEmplacement();
+   
         if(testTruck < 0) {
-            currentCratesLoading =  oldLocalCrates;
-            oldLocalCrates = 0;
+            setCurrentCratesLoading(getOldPlaceCrateAmount());
+            setOldPlaceCrateAmount(0);
         }
         else
         {
-            oldLocalCrates -= 9;
-            currentCratesLoading = 9;
+            setOldPlaceCrateAmount(getOldPlaceCrateAmount() - 9);
+            setCurrentCratesLoading(getTruckCrateEmplacement());
         }
-        PrintLine("Loading " + currentCratesLoading + " in the truck. It remain " + oldLocalCrates + " crates, in the old local");
+        PrintLine("Loading " + getCurrentCratesLoading() + " in the truck. It remain " + oldLocalCrates + " crates, in the old local");
 
     }
 
@@ -45,9 +45,9 @@ public class Main {
     public  void UnloadCrates()
     {
         PrintLine("Unloading");
-        newLocalCrates += currentCratesLoading;
-        PrintLine("Put " + currentCratesLoading + " crates, in the new local");
-        currentCratesLoading = 0;
+        newLocalCrates += getCurrentCratesLoading();
+        PrintLine("Put " + getCurrentCratesLoading() + " crates, in the new local");
+        setCurrentCratesLoading(0);
     }
 
     public static void main(String[] args) {
@@ -56,6 +56,15 @@ public class Main {
         PrintLine("Hello and welcome!");
         Main program = new Main();
 
+        Scanner input = new Scanner(System.in);
+
+
+
+        PrintLine("Combien de cartons voulez vous deplacer ?");
+        program.setOldPlaceCrateAmount(input.nextInt());
+
+        PrintLine("Quelle est la capacité de votre camion ?");
+        program.setTruckCrateEmplacement(input.nextInt());
 
         while(program.oldLocalCrates > 0)
         {
@@ -93,5 +102,29 @@ public class Main {
             LoadCrates();
             Traveling();
             UnloadCrates();
+    }
+
+    public int getOldPlaceCrateAmount() {
+        return oldLocalCrates;
+    }
+
+    public void setOldPlaceCrateAmount(int cratesNumber) {
+        this.oldLocalCrates = cratesNumber;
+    }
+
+    public int getCurrentCratesLoading() {
+        return currentCratesLoading;
+    }
+
+    public void setCurrentCratesLoading(int cratesLoading) {
+        this.currentCratesLoading = cratesLoading;
+    }
+
+    public void setTruckCrateEmplacement(int truckCrateEmplacement) {
+        this.truckCrateEmplacement = truckCrateEmplacement;
+    }
+
+    public int getTruckCrateEmplacement() {
+        return truckCrateEmplacement;
     }
 }
