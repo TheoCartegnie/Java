@@ -5,9 +5,9 @@ private String name;
 private String [] items;
 
 
-public static void crate(String[] args)
+public Crate(String name)
     {
-
+        this.name = name;
     }
 
     public void AddItem(String item)

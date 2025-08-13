@@ -1,13 +1,19 @@
+import java.util.Scanner;
 public class Truck {
 
     public String Name;
-    public int CrateCapacity;
-    public Crate[] Crates = new Crate[10];
-
+    private Local TruckContainer;
+   // public CratesContainer cratesContainer;
     public Truck(String name, int crateCapacity)
     {
-        this.Name = name;
-        this.CrateCapacity = crateCapacity;
+        Scanner input = new Scanner(System.in);
+
+        Main.printLine("Comment se nomme votre camion ?");
+        this.Name = input.nextLine();
+
+        Main.printLine("Quelle est la capacité de votre Camion ?");
+        this.TruckContainer = new Local(this.getName() + "Test" , input.nextInt());
+
     }
 
     public String getName()
@@ -20,13 +26,19 @@ public class Truck {
         this.Name = name;
     }
 
-    public int getCrateCapacity()
+    public void addCrates(Crate [] crates)
     {
-        return CrateCapacity;
+        TruckContainer.addCrates(crates);
     }
 
-    public void  setCrateCapacity(int crateCapacity)
+    public Crate[] MoveCrates(int QuantityDesired)
     {
-        this.CrateCapacity = crateCapacity;
+        return TruckContainer.MoveCrates(QuantityDesired);
     }
+
+    public int GetTruckCapacity()
+    {
+        return TruckContainer.GetCapacity();
+    }
+
 }
